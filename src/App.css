@@ -1,0 +1,90 @@
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --footer-bg: #f0f0f0;
+}
+
+.app {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.app.dark {
+  --bg: #1a1a1a;
+  --text: #f0f0f0;
+  --footer-bg: #111111;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--text);
+}
+
+.header {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.contact p {
+  margin: 0.25rem 0;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socials img {
+  width: 40px;
+  height: 40px;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.exp-item,
+.education-item {
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background: var(--footer-bg);
+}
+
+@media (max-width: 600px) {
+  .socials img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
