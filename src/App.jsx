@@ -4,24 +4,29 @@ import { translations } from './translations';
 
 export default function App() {
   const [lang, setLang] = useState('pt');
+
   const [dark, setDark] = useState(false);
   const t = translations[lang];
 
   return (
     <div className={`app ${dark ? 'dark' : ''}`}>
       <div className="top-bar">
+
         <select value={lang} onChange={(e) => setLang(e.target.value)}>
           <option value="pt">PT-BR</option>
           <option value="en">EN</option>
         </select>
+
         <button className="theme-toggle" onClick={() => setDark(!dark)}>
           {dark ? t.lightMode : t.darkMode}
         </button>
+
       </div>
 
       <header className="header">
         <h1>{t.title}</h1>
         <h2>{t.subtitle}</h2>
+
         <div className="contact">
           {t.contact.map((line, i) => (
             <p key={i}>{line}</p>
@@ -56,10 +61,12 @@ export default function App() {
           >
             <img src="/images/tw.png" alt="Twitter" />
           </a>
+
         </div>
       </header>
 
       <section>
+
         <h3>{t.summaryTitle}</h3>
         <p>{t.summaryText}</p>
       </section>
@@ -80,10 +87,12 @@ export default function App() {
             <strong>{ed.period}</strong> – {ed.degree}
           </div>
         ))}
+
       </section>
 
       <section>
         <h3>{t.experienceTitle}</h3>
+
         {t.experience.map((exp, i) => (
           <div key={i} className="exp-item">
             <h4>{exp.period}</h4>
@@ -104,6 +113,7 @@ export default function App() {
             <li key={i}>{l}</li>
           ))}
         </ul>
+
       </section>
 
       <footer>

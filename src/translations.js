@@ -1,6 +1,7 @@
 export const translations = {
   en: {
     title: 'Cristiano Koxne',
+
     subtitle:
       'Computer Engineer – Full-Stack Developer – Node.js – React.js – Python – Linux – Microservices – DevOps – Process Automation',
     contact: [
@@ -142,5 +143,6 @@ export const translations = {
     darkMode: 'Modo Escuro',
     lightMode: 'Modo Claro',
     footer: 'Desenvolvido por Cristiano Koxne'
+
   }
 };
