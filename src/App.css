@@ -1,0 +1,55 @@
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.app {
+  padding: 1rem;
+}
+
+.lang-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.header {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socials img {
+  width: 40px;
+  height: 40px;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.experience div {
+  margin-bottom: 1rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+  .socials img {
+    width: 30px;
+    height: 30px;
+  }
+}
