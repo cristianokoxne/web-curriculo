@@ -1,0 +1,27 @@
+.blog-item {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.tags {
+  min-width: 120px;
+}
+
+.tag {
+  display: block;
+  background: #ddd;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+}
+
+.summary h3 {
+  margin: 0;
+}
+
+.post .tags {
+  margin: 0.5rem 0;
+}
