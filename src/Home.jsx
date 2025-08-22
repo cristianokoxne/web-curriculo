@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import './App.css';
 import { translations } from './translations';
+import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 
-export default function Home() {
-  const [lang, setLang] = useState('pt');
-
-  const [dark, setDark] = useState(false);
+export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
   const t = translations[lang];
 
   return (
@@ -38,30 +35,29 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/images/lkd.png" alt="LinkedIn" />
+            <FaLinkedin size={28} />
           </a>
           <a
             href="https://github.com/cristianokoxne"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/images/git.png" alt="GitHub" />
+            <FaGithub size={28} />
           </a>
           <a
             href="https://www.instagram.com/cristianokoxne/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/images/insta.png" alt="Instagram" />
+            <FaInstagram size={28} />
           </a>
           <a
             href="https://twitter.com/cristianokoxne"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/images/tw.png" alt="Twitter" />
+            <FaTwitter size={28} />
           </a>
-
         </div>
       </header>
 
@@ -73,11 +69,13 @@ export default function Home() {
 
       <section>
         <h3>{t.skillsTitle}</h3>
-        <ul>
+        <div className="skills-grid">
           {t.skillsList.map((skill, i) => (
-            <li key={i}>{skill}</li>
+            <div key={i} className="skill-item">
+              <span className="skill-name">{skill}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section>

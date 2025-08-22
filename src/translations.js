@@ -5,14 +5,12 @@ export const translations = {
     subtitle:
       'Computer Engineer – Full-Stack Developer – Node.js – React.js – Python – Linux – Microservices – DevOps – Process Automation',
     contact: [
-      '+55 42 99846 9869',
-      'Rua Itália, 340, Rco do Iguaçu, Paraná, Brazil',
-      'cristiano-koxne@outlook.com',
-      'linkedin.com/in/cristiano-koxne-8866511b9'
+      'cristiano_koxne@outlook.com',
+      
     ],
     summaryTitle: 'Summary',
     summaryText:
-      'Experienced Software Engineer with over 7 years of experience in development and system implementation, specializing in Node.js, React.js, AWS, Python, microservices, and DevOps. Contributed to 20+ systems, optimizing infrastructure and enabling a scalable backend. Strong expertise in REST and GraphQL.',
+      'Experienced Software Engineer with over 6 years of experience in development and system implementation, specializing in Node.js, React.js, AWS, Python, microservices, and DevOps. Contributed to 20+ systems, optimizing infrastructure and enabling a scalable backend. Strong expertise in REST and GraphQL.',
     skillsTitle: 'Skills',
     skillsList: [
       'Languages: JavaScript, Python, C, Rust, HTML, CSS, TypeScript',
@@ -77,14 +75,12 @@ export const translations = {
     subtitle:
       'Engenheiro de Computação – Desenvolvedor Full-Stack – Node.js – React.js – Python – Linux – Microsserviços – DevOps – Automação de Processos',
     contact: [
-      '+55 42 99846 9869',
-      'Rua Itália, 340, Rco do Iguaçu, Paraná, Brasil',
-      'cristiano-koxne@outlook.com',
-      'linkedin.com/in/cristiano-koxne-8866511b9'
+      
+      'cristiano_koxne@outlook.com'
     ],
     summaryTitle: 'Resumo',
     summaryText:
-      'Engenheiro de software com mais de 7 anos de experiência em desenvolvimento e implementação de sistemas, especializado em Node.js, React.js, AWS, Python, microsserviços e DevOps. Contribuiu para mais de 20 sistemas, otimizando infraestrutura e possibilitando um backend escalável. Forte conhecimento em REST e GraphQL.',
+      'Engenheiro de software com mais de 6 anos de experiência em desenvolvimento e implementação de sistemas, especializado em Node.js, React.js, AWS, Python, microsserviços e DevOps. Contribuiu para mais de 20 sistemas, otimizando infraestrutura e possibilitando um backend escalável. Forte conhecimento em REST e GraphQL.',
     skillsTitle: 'Competências',
     skillsList: [
       'Linguagens: JavaScript, Python, C, Rust, HTML, CSS, TypeScript',
