@@ -146,7 +146,7 @@ print("✅ Email sent! Message ID:", response["MessageId"])
 Here's what you need to set up SES in your AWS account:
 
 ### 1. Domain Verification
-```bash
+\`\`\`bash
 # Add these DNS records to verify your domain
 Type: TXT
 Name: _amazonses.yourdomain.com
@@ -156,7 +156,7 @@ Value: [verification-string-from-aws]
 Type: CNAME
 Name: [dkim-key]._domainkey.yourdomain.com
 Value: [dkim-value].dkim.amazonses.com
-```
+\`\`\`
 
 ### 2. SMTP Credentials
 Once verified, AWS provides SMTP credentials:
@@ -166,13 +166,13 @@ Once verified, AWS provides SMTP credentials:
 - **Password**: Your SMTP password
 
 ### 3. Environment Variables
-```bash
+\`\`\`bash
 SES_SMTP_SERVER=email-smtp.us-east-1.amazonaws.com
 SES_SMTP_PORT=587
 SES_USERNAME=your-smtp-username
 SES_PASSWORD=your-smtp-password
 SES_FROM_EMAIL=noreply@yourdomain.com
-```
+\`\`\`
 
 ## Cost Considerations
 
