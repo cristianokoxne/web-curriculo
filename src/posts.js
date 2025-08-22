@@ -950,5 +950,211 @@ A melhor parte? Você sabe que realmente vai usar o que construir. Sem expansão
 Da próxima vez que se encontrar fazendo a mesma tarefa repetidamente, considere automatizá-la. Mesmo que leve mais tempo para construir do que economizaria inicialmente, a satisfação de usar sua própria criação todos os dias vale a pena.`
     },
     tags: ['Automation', 'Python', 'Flask', 'RSS', 'Chrome Extension', 'Cryptocurrency', 'Vercel', 'Personal Tools']
+  },
+  {
+    id: 'context-windows-ai-agents',
+    title: {
+      en: 'Context Windows: The Secret Sauce of AI Agents',
+      pt: 'Context Windows: O Ingrediente Secreto dos Agentes de IA'
+    },
+    summary: {
+      en: 'Discover how context windows transform generic AI models into powerful, personalized agents. Learn why context is more important than the model itself and how to leverage it for real-world automation.',
+      pt: 'Descubra como as janelas de contexto transformam modelos de IA genéricos em agentes poderosos e personalizados. Aprenda por que o contexto é mais importante que o próprio modelo e como aproveitá-lo para automação do mundo real.'
+    },
+    content: {
+      en: `The future is here, and surprise, surprise, it's AI! From the WhatsApp bot that barely understands you to the complex decision-making processes, AI is basically everywhere. Engineers and companies are scratching their heads trying to figure out how to make machines do more and more, sometimes cutting out the human step (but not always), boosting convenience (but not always), and simplifying complex processes (you guessed it, but not always).
+
+This endless hunt for AI automation is becoming super common. Thanks to the rise of modern pre-trained models and market competition driving prices down, big LLMs like Gemini and GPT are more accessible than ever. This is great news because unless you need a super specific AI to solve a unique problem, it's not very smart to train a neural network from scratch. It's way cheaper and more practical to just talk to these pre-trained models, which have already been tested for accuracy and quality.
+
+The real value of a language model is in its accuracy. How well can it craft a grammatically correct response that actually makes sense? This magic only happens if the training data is clean, truthful, and verified. This part is the most boring, bureaucratic stuff in the whole AI process: cleaning up the data. After that, the training part gets easier with modern architectures, but it's still a massive energy and computing hog. So yeah, for 99% of cases, outsourcing to a pre-trained model is the way to go.
+
+## A Quick Word of Warning (and a Hug)
+
+I've said this before, but it bears repeating: companies are most likely NOT using the info you pass to these language models for training. Remember what I said about accuracy? If every new chat from every user was used for training, the next version would probably start hallucinating like crazy. Your information, frankly, probably isn't good enough for training. Smooches!
+
+## Why You Need a Context Window
+
+Okay, now that we've got that out of the way, let's talk about the real magic: context windows.
+
+As I mentioned, we can't (and shouldn't) train a whole new model. But what if we want the model to know about a specific, personal topic to help us automate a process? This is where context windows come in to save the day.
+
+The idea is simple: besides sending your question, you send a bunch of context along with it to help the model answer. With a little prompt engineering, you can enrich this context however you like. You can set a specific tone, give the AI a personality, or define exactly what kind of response you want. This context acts like a cheat sheet, helping the AI give you the perfect, specific answer.
+
+## Real-World Example: Error Message Translation
+
+A practical example I've actually implemented: I had this specific error message coming from a system that was a total mess. I'd send this jumbled mess of an error to the AI, along with the context. The agent, already trained to respond in a certain way, would give me the exact JSON I needed to put into another system. It would even offer a possible solution for the error, which was also part of that context window. That's right, I'd take the AI's solution and plug it right into a third system.
+
+Here's what the context window might look like:
+
+\`\`\`
+Context: You are an expert system integration engineer. When given error messages from System A, you must:
+1. Parse the error and identify the root cause
+2. Return a properly formatted JSON response for System B
+3. Suggest a practical solution
+
+Error format from System A: Usually contains stack traces, error codes, and timestamps
+Expected JSON format for System B: {"error_type": "...", "severity": "...", "action": "..."}
+
+User query: [Error message from System A]
+\`\`\`
+
+That's the whole secret behind every AI agent: **Context**.
+
+## The Fine Print (and a Hint for Later)
+
+Of course, the context window isn't infinite—it has its limits. For example, Gemini has a limit of 16,000 tokens, which is a lot of space to play with. While there's a maximum you can send per request, you can get clever and only send the specific info needed to solve your problem.
+
+There are a few ways to fetch content to fill this window, like **RAG (Retrieval-Augmented Generation)** and **MCP (Model Context Protocol)**. I'm planning a whole post just on RAG, but if you're curious about MCP, you can check out our previous post about it!
+
+## Context Window Strategies
+
+### 1. **Role-Based Context**
+Define who the AI should be:
+- "You are a senior DevOps engineer with 10 years of experience"
+- "You are a helpful customer service representative"
+- "You are a Python expert who writes clean, efficient code"
+
+### 2. **Format-Specific Context**
+Tell the AI exactly how to respond:
+- "Always respond in JSON format"
+- "Use markdown formatting with code blocks"
+- "Provide answers in a numbered list"
+
+### 3. **Domain-Specific Context**
+Give the AI specialized knowledge:
+- Include relevant documentation
+- Provide examples of similar problems and solutions
+- Add company-specific terminology and processes
+
+### 4. **Dynamic Context**
+Fetch relevant information based on the query:
+- Pull related documents from your knowledge base
+- Include recent chat history for continuity
+- Add real-time data when relevant
+
+## The Economics of Context
+
+Using context windows effectively isn't just about better responses—it's about cost optimization too:
+
+- **Shorter conversations**: Good context reduces back-and-forth
+- **Fewer API calls**: Get the right answer on the first try  
+- **Higher accuracy**: Reduces the need for human intervention
+- **Scalable automation**: One well-designed context serves many use cases
+
+## The Father of AI Agents
+
+At the end of the day, the real power of AI agents is not only in the model itself, but in how we use context windows to shape their answers. Context allows us to transform a generic model into something personal, useful, and adapted to our own problems.
+
+Of course, there are limits—tokens, costs, and the need to filter the right information. But if we combine these tools with smart strategies like prompt engineering, RAG, or MCP, we can create agents that go far beyond simple chatbots.
+
+The future of AI is not just about bigger models. It's about how we design the interaction, how we add the right context, and how we make these systems solve real problems in practical ways.
+
+## Key Takeaways
+
+1. **Context is king**: The quality of your context window matters more than the model you use
+2. **Be specific**: Generic prompts get generic responses; specific context gets specific solutions
+3. **Think like a teacher**: Give the AI examples, formats, and clear instructions
+4. **Optimize for tokens**: Include only the context that's truly relevant to your problem
+5. **Test and iterate**: Good context windows are built through experimentation
+
+So, if you are experimenting with AI in your projects, don't just focus on the model. Think about the context you are sending. Because in the end, **context is the father of all AI agents**.`,
+      pt: `O futuro chegou e, surpresa, surpresa, é IA! Do bot do WhatsApp que mal te entende até os processos complexos de tomada de decisão, a IA está basicamente em todo lugar. Engenheiros e empresas estão coçando a cabeça tentando descobrir como fazer as máquinas fazerem cada vez mais, às vezes cortando a etapa humana (mas nem sempre), aumentando a conveniência (mas nem sempre), e simplificando processos complexos (você adivinhou, mas nem sempre).
+
+Esta busca infinita por automação de IA está se tornando super comum. Graças ao surgimento de modelos pré-treinados modernos e à competição de mercado derrubando preços, grandes LLMs como Gemini e GPT estão mais acessíveis do que nunca. Isso é ótima notícia porque, a menos que você precise de uma IA super específica para resolver um problema único, não é muito inteligente treinar uma rede neural do zero. É muito mais barato e prático apenas conversar com esses modelos pré-treinados, que já foram testados para precisão e qualidade.
+
+O valor real de um modelo de linguagem está na sua precisão. Quão bem ele consegue criar uma resposta gramaticalmente correta que realmente faz sentido? Essa mágica só acontece se os dados de treinamento forem limpos, verdadeiros e verificados. Esta parte é a coisa mais chata e burocrática de todo o processo de IA: limpar os dados. Depois disso, a parte do treinamento fica mais fácil com arquiteturas modernas, mas ainda é um grande devorador de energia e computação. Então sim, para 99% dos casos, terceirizar para um modelo pré-treinado é o caminho a seguir.
+
+## Uma Rápida Palavra de Aviso (e um Abraço)
+
+Já disse isso antes, mas vale repetir: as empresas provavelmente NÃO estão usando as informações que você passa para esses modelos de linguagem para treinamento. Lembra do que eu disse sobre precisão? Se cada novo chat de cada usuário fosse usado para treinamento, a próxima versão provavelmente começaria a alucinar loucamente. Suas informações, francamente, provavelmente não são boas o suficiente para treinamento. Beijinhos!
+
+## Por Que Você Precisa de uma Janela de Contexto
+
+Okay, agora que tiramos isso do caminho, vamos falar sobre a verdadeira mágica: janelas de contexto.
+
+Como mencionei, não podemos (e não devemos) treinar um modelo completamente novo. Mas e se quisermos que o modelo saiba sobre um tópico específico e pessoal para nos ajudar a automatizar um processo? É aqui que as janelas de contexto entram para salvar o dia.
+
+A ideia é simples: além de enviar sua pergunta, você envia um monte de contexto junto para ajudar o modelo a responder. Com um pouco de engenharia de prompt, você pode enriquecer esse contexto como quiser. Pode definir um tom específico, dar uma personalidade à IA, ou definir exatamente que tipo de resposta você quer. Esse contexto age como uma cola, ajudando a IA a te dar a resposta perfeita e específica.
+
+## Exemplo do Mundo Real: Tradução de Mensagens de Erro
+
+Um exemplo prático que realmente implementei: eu tinha essa mensagem de erro específica vindo de um sistema que era uma bagunça total. Eu enviava essa confusão de erro para a IA, junto com o contexto. O agente, já treinado para responder de uma certa forma, me daria o JSON exato que eu precisava colocar em outro sistema. Até oferecia uma possível solução para o erro, que também fazia parte dessa janela de contexto. Isso mesmo, eu pegava a solução da IA e plugava direto num terceiro sistema.
+
+Veja como a janela de contexto poderia parecer:
+
+\`\`\`
+Contexto: Você é um engenheiro especialista em integração de sistemas. Quando receber mensagens de erro do Sistema A, você deve:
+1. Analisar o erro e identificar a causa raiz
+2. Retornar uma resposta JSON adequadamente formatada para o Sistema B
+3. Sugerir uma solução prática
+
+Formato de erro do Sistema A: Geralmente contém stack traces, códigos de erro e timestamps
+Formato JSON esperado para Sistema B: {"error_type": "...", "severity": "...", "action": "..."}
+
+Consulta do usuário: [Mensagem de erro do Sistema A]
+\`\`\`
+
+Esse é todo o segredo por trás de cada agente de IA: **Contexto**.
+
+## As Letras Pequenas (e uma Dica para Mais Tarde)
+
+Claro, a janela de contexto não é infinita—ela tem seus limites. Por exemplo, Gemini tem um limite de 16.000 tokens, que é bastante espaço para brincar. Embora haja um máximo que você pode enviar por requisição, você pode ser esperto e enviar apenas a informação específica necessária para resolver seu problema.
+
+Há algumas maneiras de buscar conteúdo para preencher essa janela, como **RAG (Retrieval-Augmented Generation)** e **MCP (Model Context Protocol)**. Estou planejando um post inteiro só sobre RAG, mas se você está curioso sobre MCP, pode conferir nosso post anterior sobre isso!
+
+## Estratégias de Janela de Contexto
+
+### 1. **Contexto Baseado em Papel**
+Defina quem a IA deveria ser:
+- "Você é um engenheiro DevOps sênior com 10 anos de experiência"
+- "Você é um representante de atendimento ao cliente prestativo"
+- "Você é um especialista Python que escreve código limpo e eficiente"
+
+### 2. **Contexto Específico de Formato**
+Diga à IA exatamente como responder:
+- "Sempre responda em formato JSON"
+- "Use formatação markdown com blocos de código"
+- "Forneça respostas em lista numerada"
+
+### 3. **Contexto Específico de Domínio**
+Dê conhecimento especializado à IA:
+- Inclua documentação relevante
+- Forneça exemplos de problemas similares e soluções
+- Adicione terminologia e processos específicos da empresa
+
+### 4. **Contexto Dinâmico**
+Busque informações relevantes baseadas na consulta:
+- Puxe documentos relacionados da sua base de conhecimento
+- Inclua histórico de chat recente para continuidade
+- Adicione dados em tempo real quando relevante
+
+## A Economia do Contexto
+
+Usar janelas de contexto efetivamente não é só sobre melhores respostas—é sobre otimização de custos também:
+
+- **Conversas mais curtas**: Bom contexto reduz idas e vindas
+- **Menos chamadas de API**: Obtenha a resposta certa na primeira tentativa  
+- **Maior precisão**: Reduz a necessidade de intervenção humana
+- **Automação escalável**: Um contexto bem projetado serve muitos casos de uso
+
+## O Pai dos Agentes de IA
+
+No final das contas, o verdadeiro poder dos agentes de IA não está apenas no modelo em si, mas em como usamos janelas de contexto para moldar suas respostas. O contexto nos permite transformar um modelo genérico em algo pessoal, útil e adaptado aos nossos próprios problemas.
+
+Claro, há limites—tokens, custos e a necessidade de filtrar as informações certas. Mas se combinarmos essas ferramentas com estratégias inteligentes como engenharia de prompt, RAG ou MCP, podemos criar agentes que vão muito além de simples chatbots.
+
+O futuro da IA não é apenas sobre modelos maiores. É sobre como projetamos a interação, como adicionamos o contexto certo, e como fazemos esses sistemas resolverem problemas reais de maneiras práticas.
+
+## Principais Aprendizados
+
+1. **Contexto é rei**: A qualidade da sua janela de contexto importa mais que o modelo que você usa
+2. **Seja específico**: Prompts genéricos obtêm respostas genérias; contexto específico obtém soluções específicas
+3. **Pense como um professor**: Dê exemplos, formatos e instruções claras à IA
+4. **Otimize para tokens**: Inclua apenas o contexto que é verdadeiramente relevante para seu problema
+5. **Teste e itere**: Boas janelas de contexto são construídas através de experimentação
+
+Então, se você está experimentando com IA nos seus projetos, não foque apenas no modelo. Pense sobre o contexto que está enviando. Porque no final, **contexto é o pai de todos os agentes de IA**.`
+    },
+    tags: ['AI', 'Context Windows', 'Prompt Engineering', 'RAG', 'MCP', 'Automation', 'LLM', 'Agents']
   }
 ];
