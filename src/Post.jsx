@@ -30,6 +30,8 @@ export default function Post({ id, goBack, lang = 'pt', dark = false, setLang, s
             __html: (typeof post.content === 'string' ? post.content : post.content[lang])
               .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
               .replace(/\*(.*?)\*/g, '<em>$1</em>')
+              .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+              .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0;" />')
               .replace(/^## (.*$)/gm, '<h2>$1</h2>')
               .replace(/^### (.*$)/gm, '<h3>$1</h3>')
               .replace(/^- (.*$)/gm, '<li>$1</li>')

@@ -426,5 +426,529 @@ A chave é entender seus requisitos:
 Ambos são excelentes ferramentas, mas servem propósitos diferentes no ecossistema de email.`
     },
     tags: ['AWS', 'SES', 'Email', 'Backend', 'Python', 'DevOps']
+  },
+  {
+    id: 'behind-gpt-magic',
+    title: {
+      en: 'Behind the Magic: What Really Happens When You Ask GPT a Question',
+      pt: 'Por Trás da Magia: O Que Realmente Acontece Quando Você Faz uma Pergunta ao GPT'
+    },
+    summary: {
+      en: 'Ever wondered what happens behind the scenes when you chat with GPT? Dive into the world of embeddings, neural networks, and the math that makes AI conversations possible.',
+      pt: 'Já se perguntou o que acontece nos bastidores quando você conversa com o GPT? Mergulhe no mundo dos embeddings, redes neurais e a matemática que torna as conversas de IA possíveis.'
+    },
+    content: {
+      en: `In today's world, AI is everywhere, and Large Language Models (LLMs) are the stars of the show. They come in all shapes and sizes, flavors and vibes. But what's rarely talked about is the magic behind the scenes — the actual wizardry happening when you type a question and get a smart, often eerily accurate response.
+
+Thinking back to my university thesis (yep, that sleepless semester!), I'd like to give you a quick and simple tour of what's going on when you talk to a model like GPT. You can find more about my work on this topic in my TCC, available here: [**Cristiano Koxne's TCC**](https://riut.utfpr.edu.br/jspui/handle/1/5671/browse?type=author&order=ASC&rpp=20&value=Koxne%2C+Cristiano). But heads up: we'll assume the neural network is already trained and well-behaved. Just the training process alone could be a whole other post (there's data cleaning, architecture choices, training methodologies, fine-tuning, metric evaluation, and so on.)
+
+Let's jump straight to the part where you do what most people do: ask something to GPT.
+
+## Step One: Natural Language Processing
+
+First, let's talk about NLP, Natural Language Processing. It's a huge area in AI, but let's keep it simple. NLP is basically the attempt to teach computers how to understand human language, which is naturally messy and full of nuance.
+
+How do we teach computers to understand the human way of talking? With **math and geometry**. Yup. At the end of the day, it all boils down to numbers.
+
+Imagine two words: **king** and **queen**. We humans instantly feel the connection. Same thing with **king** and **castle**. But **king** and **platypus**? Not so much.
+
+This "closeness" is represented mathematically using something called **embeddings**, a way of turning words into numbers that preserve relationships between them. Think of a 3D map: king and queen will be close together; king and platypus will be far apart.
+
+![Word embeddings visualization showing the relationship between king, queen, and platypus](/images/1_fyYODirIo5O9OFrDuhuc2g.png)
+
+Here's a real vector from my own thesis:
+
+\`\`\`python
+[0.04058036208152771, 0.039402566850185394, 0.021815959364175797, 
+-0.012574290856719017, 0.02129398286342621, -0.004209275357425213, 
+-0.03913488611578941, -0.04625518620014191, 0.002532926620915532, 
+0.007749349810183048, 0.03985762223601341, -0.034396942704916, 
+0.04173138737678528, -0.02866857871413231, -0.010593455284833908...]
+# This continues for hundreds of dimensions!
+\`\`\`
+
+Pretty long, right? That's just one word's embedding. When you send a full sentence to GPT, it creates an embedding for each word and tries to understand how they relate to each other.
+
+## Step Two: Feeding the Beast (aka the Neural Network)
+
+Once your input is turned into vectors, they're passed into a trained neural network. Each model, GPT-3.5, GPT-4, GPT-4o, etc. has its own unique architecture and configuration.
+
+And just to clarify something I hear way too often (and it bugs me):
+
+> **No, your question is not being used to train the model.**
+
+That's a common myth. Training a neural network requires verified, clean, curated data. If every single question was used for training, the model would quickly become chaotic, hallucinate nonsense, and lose accuracy. **Accuracy is the crown jewel** of a well-trained model.
+
+During training, the model is fed inputs where the correct answers are already known. It learns by comparing its guesses to the known answers and improving itself based on how wrong it was. This is where we get evaluation metrics like accuracy, perplexity, etc.
+
+## Step Three: Output Time
+
+Once the network processes your input, it generates a response, **word by word, token by token** based on probabilities. This response gets converted from numbers back to readable text, and voilà, your answer is ready.
+
+And here's a cool part: if you're chatting in a long conversation, the model uses **context**. It remembers things you said earlier in the session, like if you told it your mom's name is Sonia, and later asked, "What's my mom's name?", it'll answer correctly because that info was sent again in the prompt, not because it "learned" it permanently.
+
+If it did learn that every Cristiano has a mom named Sonia? We'd be in deep trouble.
+
+## Bonus: How AI Agents Work
+
+This idea of carrying context from one request to another is what powers **AI agents** today. It's not magic or memory — it's just about smartly re-sending the right context so the model can connect the dots using the same embedding + inference process we just described.
+
+## Wrapping Up
+
+So there you have it! Next time someone says, "GPT just replies with words," you can smile and say, "Well, actually, it's a whole universe of math, geometry, and vector embeddings just hidden behind a friendly chatbot."
+
+And now you know: behind every simple question lies an insanely complex dance of neural networks, math, and AI engineering brilliance.
+
+Kinda cool, huh?`,
+      pt: `No mundo de hoje, a IA está em toda parte, e os Large Language Models (LLMs) são as estrelas do show. Eles vêm em todas as formas e tamanhos, sabores e vibrações. Mas o que raramente é discutido é a magia por trás dos bastidores — a verdadeira mágica que acontece quando você digita uma pergunta e recebe uma resposta inteligente, muitas vezes assustadoramente precisa.
+
+Lembrando da minha tese universitária (sim, aquele semestre sem dormir!), gostaria de dar a vocês um tour rápido e simples do que está acontecendo quando você fala com um modelo como o GPT. Você pode encontrar mais sobre meu trabalho neste tópico no meu TCC, disponível aqui: [**TCC do Cristiano Koxne**](https://riut.utfpr.edu.br/jspui/handle/1/5671/browse?type=author&order=ASC&rpp=20&value=Koxne%2C+Cristiano). Mas atenção: vamos assumir que a rede neural já está treinada e bem comportada. Só o processo de treinamento já poderia ser um post inteiro (há limpeza de dados, escolhas de arquitetura, metodologias de treinamento, fine-tuning, avaliação de métricas, e assim por diante.)
+
+Vamos pular direto para a parte onde você faz o que a maioria das pessoas faz: perguntar algo ao GPT.
+
+## Passo Um: Processamento de Linguagem Natural
+
+Primeiro, vamos falar sobre NLP, Natural Language Processing (Processamento de Linguagem Natural). É uma área enorme na IA, mas vamos manter simples. NLP é basicamente a tentativa de ensinar computadores a entender a linguagem humana, que é naturalmente bagunçada e cheia de nuances.
+
+Como ensinamos computadores a entender a forma humana de falar? Com **matemática e geometria**. Isso mesmo. No final das contas, tudo se resume a números.
+
+Imagine duas palavras: **rei** e **rainha**. Nós humanos instantaneamente sentimos a conexão. Mesma coisa com **rei** e **castelo**. Mas **rei** e **ornitorrinco**? Nem tanto.
+
+Esta "proximidade" é representada matematicamente usando algo chamado **embeddings**, uma forma de transformar palavras em números que preservam relacionamentos entre elas. Pense em um mapa 3D: rei e rainha estarão próximos; rei e ornitorrinco estarão distantes.
+
+![Visualização de embeddings de palavras mostrando a relação entre rei, rainha e ornitorrinco](/images/1_fyYODirIo5O9OFrDuhuc2g.png)
+
+Aqui está um vetor real da minha própria tese:
+
+\`\`\`python
+[0.04058036208152771, 0.039402566850185394, 0.021815959364175797, 
+-0.012574290856719017, 0.02129398286342621, -0.004209275357425213, 
+-0.03913488611578941, -0.04625518620014191, 0.002532926620915532, 
+0.007749349810183048, 0.03985762223601341, -0.034396942704916, 
+0.04173138737678528, -0.02866857871413231, -0.010593455284833908...]
+# Isso continua por centenas de dimensões!
+\`\`\`
+
+Bem longo, né? Isso é apenas o embedding de uma palavra. Quando você envia uma frase completa ao GPT, ele cria um embedding para cada palavra e tenta entender como elas se relacionam entre si.
+
+## Passo Dois: Alimentando a Fera (também conhecida como Rede Neural)
+
+Uma vez que sua entrada é transformada em vetores, eles são passados para uma rede neural treinada. Cada modelo, GPT-3.5, GPT-4, GPT-4o, etc. tem sua própria arquitetura e configuração únicas.
+
+E só para esclarecer algo que ouço com muita frequência (e me incomoda):
+
+> **Não, sua pergunta não está sendo usada para treinar o modelo.**
+
+Esse é um mito comum. Treinar uma rede neural requer dados verificados, limpos e curados. Se cada pergunta individual fosse usada para treinamento, o modelo rapidamente se tornaria caótico, alucinaria bobagens e perderia precisão. **Precisão é a joia da coroa** de um modelo bem treinado.
+
+Durante o treinamento, o modelo é alimentado com entradas onde as respostas corretas já são conhecidas. Ele aprende comparando seus palpites às respostas conhecidas e se aprimorando com base em quão errado estava. É aqui que obtemos métricas de avaliação como precisão, perplexidade, etc.
+
+## Passo Três: Hora da Saída
+
+Uma vez que a rede processa sua entrada, ela gera uma resposta, **palavra por palavra, token por token** baseada em probabilidades. Esta resposta é convertida de números de volta para texto legível, e voilà, sua resposta está pronta.
+
+E aqui está uma parte legal: se você está conversando em uma conversa longa, o modelo usa **contexto**. Ele lembra de coisas que você disse anteriormente na sessão, como se você disse que o nome da sua mãe é Sônia, e depois perguntou, "Qual é o nome da minha mãe?", ele responderá corretamente porque essa informação foi enviada novamente no prompt, não porque "aprendeu" permanentemente.
+
+Se ele realmente aprendesse que todo Cristiano tem uma mãe chamada Sônia? Estaríamos em sérios problemas.
+
+## Bônus: Como Funcionam os Agentes de IA
+
+Esta ideia de carregar contexto de uma solicitação para outra é o que alimenta os **agentes de IA** hoje. Não é mágica ou memória — é apenas sobre reenviar inteligentemente o contexto certo para que o modelo possa conectar os pontos usando o mesmo processo de embedding + inferência que acabamos de descrever.
+
+## Concluindo
+
+Então aí está! Da próxima vez que alguém disser, "GPT só responde com palavras," você pode sorrir e dizer, "Bem, na verdade, é todo um universo de matemática, geometria e embeddings de vetores apenas escondido atrás de um chatbot amigável."
+
+E agora você sabe: por trás de cada pergunta simples há uma dança insanamente complexa de redes neurais, matemática e brilhantismo da engenharia de IA.
+
+Meio legal, né?`
+    },
+    tags: ['AI', 'Machine Learning', 'LLM', 'GPT', 'NLP', 'Neural Networks', 'Embeddings']
+  },
+  {
+    id: 'unlock-ai-potential-mcp',
+    title: {
+      en: 'Unlock Your AI\'s Potential: Understanding the Model Context Protocol (MCP)',
+      pt: 'Desbloqueie o Potencial da Sua IA: Entendendo o Model Context Protocol (MCP)'
+    },
+    summary: {
+      en: 'Discover how MCP is revolutionizing AI connectivity, allowing your AI to interact with databases, Docker, APIs, and more - turning passive AI into active, real-world problem solvers.',
+      pt: 'Descubra como o MCP está revolucionando a conectividade da IA, permitindo que sua IA interaja com bancos de dados, Docker, APIs e muito mais - transformando IA passiva em solucionadores ativos de problemas do mundo real.'
+    },
+    content: {
+      en: `Have you ever imagined your Artificial Intelligence not just answering questions, but actually acting in the real world, interacting with your systems and data? Get ready to learn about the Model Context Protocol (MCP), an innovation that's changing how AIs connect and operate.
+
+Forget the idea of isolated AIs. MCP is the bridge that allows them to talk to your database, control your Docker containers, access your files, and much more! If you're a developer, an AI enthusiast, or just curious, this post is for you.
+
+## What is MCP and Why Is It a Game-Changer?
+
+In simple terms, MCP is a protocol that standardizes how systems provide context and functionalities to AI models. Think of it as a universal language that allows your AI to understand and utilize information and tools from any external system.
+
+Why is this revolutionary?
+
+- **Connectivity**: Your AI can integrate with almost anything: PostgreSQL, Docker, APIs, Google Drive, Git, Slack, your file system, and even Kubernetes!
+- **Real-World Action**: The AI doesn't just "know," it "does." It can create files, call APIs, manage resources, and execute complex tasks.
+- **Intelligent Context**: It all comes down to giving the AI the right context. MCP optimizes this, ensuring the AI has precise information at the right time.
+
+## The Pillars of MCP: How Does This Magic Work?
+
+MCP operates with several key components that work together to give your AI superpowers:
+
+### The Host (and the MCP Client):
+
+- **Host**: This is your application (like the Cursor editor, VS Code, or even Claude) that uses the AI.
+- **MCP Client**: This is a piece of code within your Host that "speaks" the MCP language. It communicates with MCP servers to request information or perform actions.
+
+### The MCPServer:
+
+This is the heart of the connection. The MCP Server is what connects to your external data sources or functionalities. It can run locally on your machine or remotely in the cloud.
+
+Imagine an MCP server for your PostgreSQL database, another for Docker, and so on. Each acts as a "translator" between your AI and a specific system.
+
+### Tools: AI in Action!
+
+These are functionalities that perform actions. Think of them as "buttons" the AI can "press."
+
+- **Example**: A \`create_user\` tool to add a user to a database, or \`get_container_status\` to check Docker.
+- **Who decides?** The AI (LLM) itself decides when and which tool to call, based on your request. If you ask "create a new user named John," the AI can invoke the \`create_user\` tool.
+- MCP servers have auto-discovery features, so the AI "sees" which tools are available.
+
+### Resources: The Perfect Context!
+
+These allow the client (your application) to fetch data to be used as context for the AI. Think of them as "datasets" or "documents" the AI can read.
+
+- **Example**: A resource could be a documentation file, specific customer data from your CRM, or the content of a web page.
+- **Who decides?** Unlike tools, it's your application (the Host) that decides when to call a resource to get context. This is super efficient for providing precise information to the AI.
+
+### Prompts: Pre-Defined Templates for Common Tasks!
+
+These are pre-defined prompt templates that users can select.
+
+- **Example**: A "Generate Monthly Report" prompt that already has the structure ready, just waiting for a few details.
+- **Benefit**: Saves time and ensures consistency for recurring tasks, avoiding copy-pasting or rewriting complex prompts.
+- **Who decides?** The user chooses which prompt to use.
+
+## How Does Communication Happen?
+
+MCP uses different formats for communication between the Host and the MCP Server:
+
+- **STDIO (Standard Input/Output)**: Generally used when the MCP server is running locally on your machine. Communication is fast and efficient via JSON-RPC.
+- **HTTP (SSE - Server-Sent Events)**: Used for remote MCP servers. It maintains a client-server connection for sending information. It's a bit more complex to implement due to security, authentication, and authorization concerns, but it allows you to access your MCPs from anywhere.
+
+## Security: A Key Point!
+
+A word of caution: when installing local MCP servers, always verify the source. A malicious MCP server could gain access to and harm your system. Security is paramount!
+
+## Hands-On: How to Configure an MCP Server (Simple Example)
+
+The beauty of MCP is that you can create your own servers to integrate AI with almost anything. Let's imagine a simple example of an MCP server in TypeScript that interacts with a Go API to manage users:
+
+\`\`\`typescript
+class MyMcpServer {
+  // Registers available tools that the AI can invoke
+  registerTools() {
+    console.log("Registering tool: get_users");
+    console.log("Registering tool: create_user");
+  }
+
+  // Handles the 'get_users' tool call by fetching user data from the backend API
+  async handleGetUsers() {
+    const response = await fetch("http://localhost:8080/api/users");
+    const users = await response.json();
+    return { users: users }; // Returns the list of users to the AI
+  }
+
+  // Handles the 'create_user' tool call by sending user data to the backend API
+  async handleCreateUser(name, email) {
+    const response = await fetch("http://localhost:8080/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email }),
+    });
+    const newUser = await response.json();
+    return { status: "success", user: newUser }; // Returns the status and created user to the AI
+  }
+}
+
+// In a real-world scenario, an MCP library would typically handle much of this logic automatically
+\`\`\`
+
+In this example, the MCP server exposes the \`get_users\` and \`create_user\` tools. When your AI (in a Host application like Cursor) needs to interact with your user system, it can call these tools through the MCP server, which in turn communicates with your backend API.
+
+## The Future of AI is Connected
+
+The Model Context Protocol is more than just a technical specification; it's a giant leap forward in making Artificial Intelligence truly useful and integrated into our workflows. By allowing AIs to access and manipulate real-time data, MCP opens up a universe of possibilities for automation, intelligent assistance, and innovation.
+
+If you're building AI applications, diving into MCP is a worthwhile investment. Get ready for a future where your AI not only thinks, but also acts!`,
+      pt: `Você já imaginou sua Inteligência Artificial não apenas respondendo perguntas, mas realmente agindo no mundo real, interagindo com seus sistemas e dados? Prepare-se para conhecer o Model Context Protocol (MCP), uma inovação que está mudando como as IAs se conectam e operam.
+
+Esqueça a ideia de IAs isoladas. O MCP é a ponte que permite que elas conversem com seu banco de dados, controlem seus containers Docker, acessem seus arquivos e muito mais! Se você é desenvolvedor, entusiasta de IA, ou apenas curioso, este post é para você.
+
+## O que é MCP e Por Que É Revolucionário?
+
+Em termos simples, MCP é um protocolo que padroniza como sistemas fornecem contexto e funcionalidades para modelos de IA. Pense nele como uma linguagem universal que permite que sua IA entenda e utilize informações e ferramentas de qualquer sistema externo.
+
+Por que isso é revolucionário?
+
+- **Conectividade**: Sua IA pode se integrar com praticamente qualquer coisa: PostgreSQL, Docker, APIs, Google Drive, Git, Slack, seu sistema de arquivos e até mesmo Kubernetes!
+- **Ação no Mundo Real**: A IA não apenas "sabe", ela "faz". Pode criar arquivos, chamar APIs, gerenciar recursos e executar tarefas complexas.
+- **Contexto Inteligente**: Tudo se resume a dar à IA o contexto correto. O MCP otimiza isso, garantindo que a IA tenha informações precisas no momento certo.
+
+## Os Pilares do MCP: Como Funciona Esta Mágica?
+
+O MCP opera com vários componentes-chave que trabalham juntos para dar superpoderes à sua IA:
+
+### O Host (e o Cliente MCP):
+
+- **Host**: Esta é sua aplicação (como o editor Cursor, VS Code, ou mesmo Claude) que usa a IA.
+- **Cliente MCP**: Este é um pedaço de código dentro do seu Host que "fala" a linguagem MCP. Ele se comunica com servidores MCP para solicitar informações ou realizar ações.
+
+### O Servidor MCP:
+
+Este é o coração da conexão. O Servidor MCP é o que se conecta às suas fontes de dados externos ou funcionalidades. Pode rodar localmente em sua máquina ou remotamente na nuvem.
+
+Imagine um servidor MCP para seu banco de dados PostgreSQL, outro para Docker, e assim por diante. Cada um age como um "tradutor" entre sua IA e um sistema específico.
+
+### Ferramentas: IA em Ação!
+
+Estas são funcionalidades que executam ações. Pense nelas como "botões" que a IA pode "apertar".
+
+- **Exemplo**: Uma ferramenta \`create_user\` para adicionar um usuário ao banco de dados, ou \`get_container_status\` para verificar Docker.
+- **Quem decide?** A própria IA (LLM) decide quando e qual ferramenta chamar, baseada na sua solicitação. Se você perguntar "crie um novo usuário chamado João", a IA pode invocar a ferramenta \`create_user\`.
+- Servidores MCP têm recursos de auto-descoberta, então a IA "vê" quais ferramentas estão disponíveis.
+
+### Recursos: O Contexto Perfeito!
+
+Estes permitem que o cliente (sua aplicação) busque dados para serem usados como contexto para a IA. Pense neles como "conjuntos de dados" ou "documentos" que a IA pode ler.
+
+- **Exemplo**: Um recurso pode ser um arquivo de documentação, dados específicos de clientes do seu CRM, ou o conteúdo de uma página web.
+- **Quem decide?** Diferentemente das ferramentas, é sua aplicação (o Host) que decide quando chamar um recurso para obter contexto. Isso é super eficiente para fornecer informações precisas à IA.
+
+### Prompts: Templates Pré-Definidos para Tarefas Comuns!
+
+Estes são templates de prompt pré-definidos que usuários podem selecionar.
+
+- **Exemplo**: Um prompt "Gerar Relatório Mensal" que já tem a estrutura pronta, apenas esperando alguns detalhes.
+- **Benefício**: Economiza tempo e garante consistência para tarefas recorrentes, evitando copiar-colar ou reescrever prompts complexos.
+- **Quem decide?** O usuário escolhe qual prompt usar.
+
+## Como Acontece a Comunicação?
+
+O MCP usa diferentes formatos para comunicação entre o Host e o Servidor MCP:
+
+- **STDIO (Standard Input/Output)**: Geralmente usado quando o servidor MCP está rodando localmente em sua máquina. A comunicação é rápida e eficiente via JSON-RPC.
+- **HTTP (SSE - Server-Sent Events)**: Usado para servidores MCP remotos. Mantém uma conexão cliente-servidor para envio de informações. É um pouco mais complexo de implementar devido a questões de segurança, autenticação e autorização, mas permite acessar seus MCPs de qualquer lugar.
+
+## Segurança: Um Ponto Chave!
+
+Uma palavra de cautela: ao instalar servidores MCP locais, sempre verifique a fonte. Um servidor MCP malicioso poderia ganhar acesso e prejudicar seu sistema. Segurança é fundamental!
+
+## Prática: Como Configurar um Servidor MCP (Exemplo Simples)
+
+A beleza do MCP é que você pode criar seus próprios servidores para integrar IA com praticamente qualquer coisa. Vamos imaginar um exemplo simples de um servidor MCP em TypeScript que interage com uma API Go para gerenciar usuários:
+
+\`\`\`typescript
+class MyMcpServer {
+  // Registra ferramentas disponíveis que a IA pode invocar
+  registerTools() {
+    console.log("Registrando ferramenta: get_users");
+    console.log("Registrando ferramenta: create_user");
+  }
+
+  // Manipula a chamada da ferramenta 'get_users' buscando dados de usuário da API backend
+  async handleGetUsers() {
+    const response = await fetch("http://localhost:8080/api/users");
+    const users = await response.json();
+    return { users: users }; // Retorna a lista de usuários para a IA
+  }
+
+  // Manipula a chamada da ferramenta 'create_user' enviando dados de usuário para a API backend
+  async handleCreateUser(name, email) {
+    const response = await fetch("http://localhost:8080/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email }),
+    });
+    const newUser = await response.json();
+    return { status: "success", user: newUser }; // Retorna o status e usuário criado para a IA
+  }
+}
+
+// Em um cenário real, uma biblioteca MCP normalmente lidaria com muito desta lógica automaticamente
+\`\`\`
+
+Neste exemplo, o servidor MCP expõe as ferramentas \`get_users\` e \`create_user\`. Quando sua IA (em uma aplicação Host como Cursor) precisa interagir com seu sistema de usuários, pode chamar essas ferramentas através do servidor MCP, que por sua vez se comunica com sua API backend.
+
+## O Futuro da IA é Conectado
+
+O Model Context Protocol é mais que apenas uma especificação técnica; é um salto gigante em tornar a Inteligência Artificial verdadeiramente útil e integrada aos nossos fluxos de trabalho. Ao permitir que IAs acessem e manipulem dados em tempo real, o MCP abre um universo de possibilidades para automação, assistência inteligente e inovação.
+
+Se você está construindo aplicações de IA, mergulhar no MCP é um investimento que vale a pena. Prepare-se para um futuro onde sua IA não apenas pensa, mas também age!`
+    },
+    tags: ['MCP', 'AI', 'Protocol', 'Integration', 'TypeScript', 'API', 'Automation', 'Context']
+  },
+  {
+    id: 'automating-my-own-tools',
+    title: {
+      en: 'Why I Enjoy Automating My Own Tools',
+      pt: 'Por Que Gosto de Automatizar Minhas Próprias Ferramentas'
+    },
+    summary: {
+      en: 'Building custom automation solutions for personal productivity is more rewarding than fixing others\' problems. Here\'s how I created a free cryptocurrency RSS feed for my Chrome extension using Python, Flask, and Vercel.',
+      pt: 'Construir soluções de automação personalizadas para produtividade pessoal é mais gratificante que resolver problemas dos outros. Veja como criei um feed RSS gratuito de criptomoedas para minha extensão do Chrome usando Python, Flask e Vercel.'
+    },
+    content: {
+      en: `If you work in development, you've probably spent hours automating a routine task. Let's be honest: solving your own problems is way more fun than fixing someone else's. At least I find it much more rewarding when I build something I know I'll actually use.
+
+Lately, I've been relying on a Chrome extension called **Anori** to streamline everything: daily shortcuts, Drive links, ChatGPT, weather forecasts, RAM/CPU usage and even recently opened tabs all appear the moment I open a new tab.
+
+It's highly customizable (and open source if you want to add features). If you're interested, here's the GitHub repo: [**Anori**](https://github.com/OlegWock/anori). As a Web3 and crypto enthusiast, though, I wanted one more feature: real‑time prices of my favorite coins.
+
+## The Challenge: Adding Crypto Prices to My New Tab
+
+Because Anori supports RSS feeds and I'd never used that format before, I researched how it works. RSS is simply a way for websites to publish updates so multiple clients can consume them. Whenever the feed changes, all subscribed clients see the update. That was my way in—I could make Anori display my custom feed.
+
+I needed a lightweight solution with zero hosting or API fees. After some research, I discovered **CoinStats**, which offers up to one million free requests—perfect for prototyping. I've been using it for six months and haven't exceeded five thousand requests. Since I already deploy React apps on Vercel, I knew I could also host a tiny Python + Flask API there at no extra cost.
+
+With that, the architecture was complete: a cryptocurrency data provider, a serverless endpoint running my code, and the Chrome extension fetching and displaying the data—completely free.
+
+## The Solution: Custom RSS Feed for Cryptocurrency Prices
+
+Here's the heart of the solution: a Flask route that pulls data, filters for the coins I track, and returns a valid RSS document.
+
+\`\`\`python
+@app.route('/criptrss')
+def crypto_rss():
+    # Fetch data from CoinStats API
+    data = requests.get(COINSTATS_URL, headers=headers).json()["result"]
+    
+    # Filter only the coins I care about
+    coins = [c for c in data if c["symbol"] in ["BTC", "ETH", "SOL", "BNB", "USDT"]]
+    
+    # Build RSS items
+    items = ""
+    for c in coins:
+        price = "{:.2f}".format(c['price'])
+        items += "<item><title>" + c['name'] + " (" + c['symbol'] + ")</title>"
+        items += "<description>USD: $" + price + "</description></item>"
+    
+    rss = "<?xml version='1.0'?><rss><channel>" + items + "</channel></rss>"
+    return Response(rss, mimetype='application/rss+xml')
+\`\`\`
+
+Every hour, my API fetches the latest USD prices for a handful of coins and converts them into BRL by checking the USDT/BRL pair. It then generates a simple RSS feed where each \`<item>\` contains one coin's name, symbol, price in USD, and price in BRL. Finally, Anori reads that RSS feed and displays the up‑to‑date prices right in my new tab.
+
+## The Architecture
+
+The complete setup consists of:
+
+1. **CoinStats API**: Free tier with 1M requests/month
+2. **Python + Flask**: Lightweight serverless function
+3. **Vercel**: Free hosting for the API endpoint
+4. **Anori Chrome Extension**: RSS feed consumer
+5. **RSS Format**: Standard protocol for data syndication
+
+## Why This Approach Works
+
+- **Zero Cost**: Everything runs on free tiers
+- **Minimal Maintenance**: Serverless functions scale automatically
+- **Personal Control**: I decide which coins to track and how to display them
+- **Open Standards**: RSS is universally supported
+- **Immediate Value**: Data appears instantly when I open a new tab
+
+## The Satisfaction of Personal Automation
+
+This little project runs smoothly, costs me nothing, and gives me exactly what I want every time I open a new tab. If you've ever spent hours automating a simple task just to save yourself a few clicks later, you know how satisfying it feels.
+
+There's something deeply rewarding about building tools that solve your own specific problems. Unlike client work or open-source contributions where you're solving problems for others, personal automation projects give you complete control over the requirements, timeline, and implementation.
+
+The best part? You know you'll actually use what you build. No feature creep, no unnecessary complexity—just a focused solution that makes your daily workflow a little bit better.
+
+## Key Takeaways
+
+1. **Personal projects are more motivating** than solving other people's problems
+2. **Free tiers can go a long way** when building lightweight solutions
+3. **Open standards like RSS** provide simple integration points
+4. **Serverless architectures** minimize maintenance overhead
+5. **Small improvements** to daily workflows compound over time
+
+Next time you find yourself doing the same task repeatedly, consider automating it. Even if it takes longer to build than it would save initially, the satisfaction of using your own creation every day is worth it.`,
+      pt: `Se você trabalha com desenvolvimento, provavelmente já passou horas automatizando uma tarefa rotineira. Vamos ser honestos: resolver seus próprios problemas é muito mais divertido que consertar os dos outros. Pelo menos eu acho muito mais gratificante quando construo algo que sei que realmente vou usar.
+
+Ultimamente, tenho dependido de uma extensão do Chrome chamada **Anori** para otimizar tudo: atalhos diários, links do Drive, ChatGPT, previsão do tempo, uso de RAM/CPU e até abas recentemente abertas aparecem no momento que abro uma nova aba.
+
+É altamente personalizável (e código aberto se você quiser adicionar recursos). Se tiver interesse, aqui está o repositório GitHub: [**Anori**](https://github.com/OlegWock/anori). Como entusiasta de Web3 e cripto, porém, eu queria mais um recurso: preços em tempo real das minhas moedas favoritas.
+
+## O Desafio: Adicionar Preços de Cripto à Minha Nova Aba
+
+Como o Anori suporta feeds RSS e eu nunca havia usado esse formato antes, pesquisei como funciona. RSS é simplesmente uma forma de sites publicarem atualizações para que múltiplos clientes possam consumi-las. Sempre que o feed muda, todos os clientes inscritos veem a atualização. Essa foi minha entrada—eu poderia fazer o Anori exibir meu feed personalizado.
+
+Eu precisava de uma solução leve com zero taxas de hospedagem ou API. Após algumas pesquisas, descobri o **CoinStats**, que oferece até um milhão de requisições gratuitas—perfeito para prototipagem. Tenho usado há seis meses e não ultrapassei cinco mil requisições. Como já implanto apps React no Vercel, sabia que também poderia hospedar uma pequena API Python + Flask lá sem custo extra.
+
+Com isso, a arquitetura estava completa: um provedor de dados de criptomoeda, um endpoint serverless executando meu código, e a extensão Chrome buscando e exibindo os dados—completamente gratuito.
+
+## A Solução: Feed RSS Personalizado para Preços de Criptomoedas
+
+Aqui está o coração da solução: uma rota Flask que puxa dados, filtra as moedas que acompanho, e retorna um documento RSS válido.
+
+\`\`\`python
+@app.route('/criptrss')
+def crypto_rss():
+    # Busca dados da API CoinStats
+    data = requests.get(COINSTATS_URL, headers=headers).json()["result"]
+    
+    # Filtra apenas as moedas que me interessam
+    coins = [c for c in data if c["symbol"] in ["BTC", "ETH", "SOL", "BNB", "USDT"]]
+    
+    # Constrói itens RSS
+    items = ""
+    for c in coins:
+        price = "{:.2f}".format(c['price'])
+        items += "<item><title>" + c['name'] + " (" + c['symbol'] + ")</title>"
+        items += "<description>USD: $" + price + "</description></item>"
+    
+    rss = "<?xml version='1.0'?><rss><channel>" + items + "</channel></rss>"
+    return Response(rss, mimetype='application/rss+xml')
+\`\`\`
+
+A cada hora, minha API busca os preços mais recentes em USD de um punhado de moedas e os converte para BRL verificando o par USDT/BRL. Em seguida, gera um feed RSS simples onde cada \`<item>\` contém nome da moeda, símbolo, preço em USD e preço em BRL. Finalmente, o Anori lê esse feed RSS e exibe os preços atualizados bem na minha nova aba.
+
+## A Arquitetura
+
+A configuração completa consiste em:
+
+1. **API CoinStats**: Tier gratuito com 1M requisições/mês
+2. **Python + Flask**: Função serverless leve
+3. **Vercel**: Hospedagem gratuita para o endpoint da API
+4. **Extensão Anori Chrome**: Consumidor do feed RSS
+5. **Formato RSS**: Protocolo padrão para sindicação de dados
+
+## Por Que Esta Abordagem Funciona
+
+- **Custo Zero**: Tudo roda em tiers gratuitos
+- **Manutenção Mínima**: Funções serverless escalam automaticamente
+- **Controle Pessoal**: Eu decido quais moedas acompanhar e como exibi-las
+- **Padrões Abertos**: RSS é universalmente suportado
+- **Valor Imediato**: Dados aparecem instantaneamente quando abro uma nova aba
+
+## A Satisfação da Automação Pessoal
+
+Este pequeno projeto roda suavemente, não me custa nada, e me dá exatamente o que quero toda vez que abro uma nova aba. Se você já passou horas automatizando uma tarefa simples só para economizar alguns cliques depois, sabe como é satisfatório.
+
+Há algo profundamente gratificante em construir ferramentas que resolvem seus próprios problemas específicos. Diferente de trabalho para clientes ou contribuições open-source onde você está resolvendo problemas dos outros, projetos de automação pessoal te dão controle completo sobre os requisitos, cronograma e implementação.
+
+A melhor parte? Você sabe que realmente vai usar o que construir. Sem expansão desnecessária de recursos, sem complexidade desnecessária—apenas uma solução focada que torna seu fluxo de trabalho diário um pouco melhor.
+
+## Principais Aprendizados
+
+1. **Projetos pessoais são mais motivadores** que resolver problemas dos outros
+2. **Tiers gratuitos podem ir longe** ao construir soluções leves
+3. **Padrões abertos como RSS** fornecem pontos de integração simples
+4. **Arquiteturas serverless** minimizam sobrecarga de manutenção
+5. **Pequenas melhorias** em fluxos de trabalho diários se acumulam com o tempo
+
+Da próxima vez que se encontrar fazendo a mesma tarefa repetidamente, considere automatizá-la. Mesmo que leve mais tempo para construir do que economizaria inicialmente, a satisfação de usar sua própria criação todos os dias vale a pena.`
+    },
+    tags: ['Automation', 'Python', 'Flask', 'RSS', 'Chrome Extension', 'Cryptocurrency', 'Vercel', 'Personal Tools']
   }
 ];
