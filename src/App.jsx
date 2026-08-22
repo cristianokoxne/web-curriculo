@@ -30,6 +30,10 @@ export default function App() {
   const postId = path.startsWith('/blog/') ? decodeURIComponent(path.slice('/blog/'.length)) : null;
   const page = postId ? 'post' : path === '/blog' ? 'blog' : 'home';
 
+  useEffect(() => {
+    document.title = page === 'home' ? (lang === 'pt' ? 'Currículo' : 'Resume') : 'Blog';
+  }, [page, lang]);
+
   let content = <Home lang={lang} setLang={setLang} dark={dark} setDark={setDark} />;
   if (page === 'blog') {
     content = <Blog openPost={(id) => navigate(`/blog/${id}`)} lang={lang} dark={dark} setLang={setLang} setDark={setDark} />;
