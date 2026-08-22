@@ -1,32 +1,36 @@
 import './App.css';
 import { translations } from './translations';
 import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiMoon, FiSun } from 'react-icons/fi';
 
 export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
   const t = translations[lang];
 
   return (
-    <div className={`app ${dark ? 'dark' : ''}`}>
+    <main className="resume-page">
       <div className="top-bar">
 
-        <select value={lang} onChange={(e) => setLang(e.target.value)}>
+        <select aria-label="Selecionar idioma" value={lang} onChange={(e) => setLang(e.target.value)}>
           <option value="pt">PT-BR</option>
           <option value="en">EN</option>
         </select>
 
         <button className="theme-toggle" onClick={() => setDark(!dark)}>
-          {dark ? t.lightMode : t.darkMode}
+          {dark ? <FiSun /> : <FiMoon />}<span>{dark ? t.lightMode : t.darkMode}</span>
         </button>
 
       </div>
 
-      <header className="header">
+      <header className="header hero">
+        <div className="hero-orbit orbit-one" />
+        <div className="hero-orbit orbit-two" />
+        <p className="eyebrow">{lang === 'pt' ? 'PORTFÓLIO · ENGENHARIA DE SOFTWARE' : 'PORTFOLIO · SOFTWARE ENGINEERING'}</p>
         <h1>{t.title}</h1>
         <h2>{t.subtitle}</h2>
 
         <div className="contact">
           {t.contact.map((line, i) => (
-            <p key={i}>{line}</p>
+            <p key={i}><FiMail /> {line}</p>
           ))}
         </div>
         <div className="socials">
@@ -59,15 +63,18 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
             <FaTwitter size={28} />
           </a>
         </div>
+        <a className="scroll-cue" href="#summary"><FiArrowDown /> {lang === 'pt' ? 'Conheça meu trabalho' : 'Explore my work'}</a>
       </header>
 
-      <section>
+      <section id="summary" className="intro-section reveal">
+        <div className="section-kicker"><FiCode /> 01</div>
 
         <h3>{t.summaryTitle}</h3>
         <p>{t.summaryText}</p>
       </section>
 
-      <section>
+      <section className="reveal">
+        <div className="section-kicker"><FiCode /> 02</div>
         <h3>{t.skillsTitle}</h3>
         <div className="skills-grid">
           {t.skillsList.map((skill, i) => (
@@ -78,7 +85,8 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
         </div>
       </section>
 
-      <section>
+      <section className="reveal">
+        <div className="section-kicker"><FiBriefcase /> 03</div>
         <h3>{t.educationTitle}</h3>
         {t.education.map((ed, i) => (
           <div key={i} className="education-item">
@@ -88,7 +96,8 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
 
       </section>
 
-      <section>
+      <section className="reveal">
+        <div className="section-kicker"><FiBriefcase /> 04</div>
         <h3>{t.experienceTitle}</h3>
 
         {t.experience.map((exp, i) => (
@@ -104,7 +113,8 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
         ))}
       </section>
 
-      <section>
+      <section className="reveal language-section">
+        <div className="section-kicker"><FiGlobe /> 05</div>
         <h3>{t.languagesTitle}</h3>
         <ul>
           {t.languagesList.map((l, i) => (
@@ -116,8 +126,9 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
 
       <footer>
         <p>{t.footer}</p>
+        <a href="https://deerflow.tech" target="_blank" rel="noreferrer" className="deerflow-mark">Created by Deerflow ↗</a>
       </footer>
-    </div>
+    </main>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiBookOpen, FiHome } from 'react-icons/fi';
 import Home from './Home';
 import Blog from './Blog';
 import Post from './Post';
@@ -26,9 +27,12 @@ export default function App() {
 
   return (
     <div className={`app ${dark ? 'dark' : ''}`}>
-      <nav className="main-nav">
-        <button onClick={() => setPage('home')}>Home</button>
-        <button onClick={() => setPage('blog')}>Blog</button>
+      <nav className="main-nav" aria-label="Navegação principal">
+        <button className="brand" onClick={() => setPage('home')} aria-label="Ir para o início">CK<span>.</span></button>
+        <div className="nav-links">
+          <button className={page === 'home' ? 'active' : ''} onClick={() => setPage('home')}><FiHome /> Home</button>
+          <button className={page === 'blog' || page === 'post' ? 'active' : ''} onClick={() => setPage('blog')}><FiBookOpen /> Blog</button>
+        </div>
       </nav>
       {content}
     </div>
