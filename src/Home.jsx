@@ -2,11 +2,20 @@ import { useState } from 'react';
 import './App.css';
 import { translations } from './translations';
 import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiUser } from 'react-icons/fi';
+import { FiArrowDown, FiArrowUpRight, FiBriefcase, FiCode, FiGlobe, FiLayers, FiMail, FiUser } from 'react-icons/fi';
 
 export default function Home({ lang = 'pt', setLang, dark = false, setDark, navigate }) {
   const t = translations[lang];
   const [photoAvailable, setPhotoAvailable] = useState(true);
+  const products = lang === 'pt' ? [
+    { name: 'UsaAí', description: 'Conecta a operação do Chatcenter Fortics aos números de WhatsApp, tornando a comunicação da equipe mais fluida e integrada.', url: 'https://www.usaai.com.br/', icon: '/images/product-usaai.png' },
+    { name: 'Fast Sheet API', description: 'Uma forma simples e rápida de disponibilizar dados de planilhas para o mundo por meio de uma API.', url: 'https://www.fastsheetapi.com/', icon: '/images/product-fastsheet.svg' },
+    { name: 'OmniBridge', description: 'Uma página de bio elegante para Instagram e TikTok, com links estratégicos, tema personalizável e métricas de cliques.', url: 'https://omnibridge.com.br/', icon: '/images/product-omnibridge.svg' },
+  ] : [
+    { name: 'UsaAí', description: 'Connects Chatcenter Fortics operations to WhatsApp numbers, making team communication more fluid and integrated.', url: 'https://www.usaai.com.br/', icon: '/images/product-usaai.png' },
+    { name: 'Fast Sheet API', description: 'A simple, fast way to make spreadsheet data available to the world through an API.', url: 'https://www.fastsheetapi.com/', icon: '/images/product-fastsheet.svg' },
+    { name: 'OmniBridge', description: 'An elegant bio page for Instagram and TikTok, with strategic links, customizable themes, and click metrics.', url: 'https://omnibridge.com.br/', icon: '/images/product-omnibridge.svg' },
+  ];
 
   return (
     <main className="resume-page">
@@ -68,6 +77,21 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark, navi
         <p>{t.summaryText}</p>
       </section>
 
+      {false && <section className="reveal products-section">
+        <div className="section-kicker"><FiLayers /> 02</div>
+        <h3>{lang === 'pt' ? 'Produtos desenvolvidos' : 'Products I built'}</h3>
+        <p>{lang === 'pt' ? 'Soluções digitais pensadas para simplificar operações, conectar sistemas e colocar dados em movimento.' : 'Digital solutions designed to simplify operations, connect systems, and put data in motion.'}</p>
+        <div className="products-grid">
+          {products.map((product, index) => (
+            <article key={product.name} className="product-card">
+              <div className="product-card-head"><span className="product-index">0{index + 1}</span><span className="product-logo"><img src={product.icon} alt="" /></span></div>
+              <h4>{product.name}</h4><p>{product.description}</p>
+              <a href={product.url} target="_blank" rel="noreferrer">{lang === 'pt' ? 'Conhecer produto' : 'Visit product'} <FiArrowUpRight /></a>
+            </article>
+          ))}
+        </div>
+      </section>}
+
       <section className="reveal">
         <div className="section-kicker"><FiCode /> 02</div>
         <h3>{t.skillsTitle}</h3>
@@ -108,8 +132,23 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark, navi
         ))}
       </section>
 
+      <section className="reveal products-section">
+        <div className="section-kicker"><FiLayers /> 05</div>
+        <h3>{lang === 'pt' ? 'Produtos desenvolvidos' : 'Products I built'}</h3>
+        <p>{lang === 'pt' ? 'Soluções digitais pensadas para simplificar operações, conectar sistemas e colocar dados em movimento.' : 'Digital solutions designed to simplify operations, connect systems, and put data in motion.'}</p>
+        <div className="products-grid">
+          {products.map((product, index) => (
+            <article key={product.name} className="product-card">
+              <div className="product-card-head"><span className="product-index">0{index + 1}</span><span className="product-logo"><img src={product.icon} alt={`${product.name} logo`} /></span></div>
+              <h4>{product.name}</h4><p>{product.description}</p>
+              <a href={product.url} target="_blank" rel="noreferrer">{lang === 'pt' ? 'Conhecer produto' : 'Visit product'} <FiArrowUpRight /></a>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="reveal language-section">
-        <div className="section-kicker"><FiGlobe /> 05</div>
+        <div className="section-kicker"><FiGlobe /> 06</div>
         <h3>{t.languagesTitle}</h3>
         <ul>
           {t.languagesList.map((l, i) => (
