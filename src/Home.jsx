@@ -2,27 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import { translations } from './translations';
 import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiMoon, FiSun, FiUser } from 'react-icons/fi';
+import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiUser } from 'react-icons/fi';
 
-export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
+export default function Home({ lang = 'pt', setLang, dark = false, setDark, navigate }) {
   const t = translations[lang];
   const [photoAvailable, setPhotoAvailable] = useState(true);
 
   return (
     <main className="resume-page">
-      <div className="top-bar">
-
-        <select aria-label="Selecionar idioma" value={lang} onChange={(e) => setLang(e.target.value)}>
-          <option value="pt">PT-BR</option>
-          <option value="en">EN</option>
-        </select>
-
-        <button className="theme-toggle" onClick={() => setDark(!dark)}>
-          {dark ? <FiSun /> : <FiMoon />}<span>{dark ? t.lightMode : t.darkMode}</span>
-        </button>
-
-      </div>
-
       <header className="header hero">
         <div className="hero-orbit orbit-one" />
         <div className="hero-orbit orbit-two" />
@@ -134,7 +121,11 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
 
       <footer>
         <p>{t.footer}</p>
-        <a href="https://deerflow.tech" target="_blank" rel="noreferrer" className="deerflow-mark">Created by Deerflow ↗</a>
+        <div className="footer-links" aria-label="Navegação do rodapé">
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>Home</a>
+          <a href="/blog" onClick={(e) => { e.preventDefault(); navigate('/blog'); }}>Blog</a>
+          <a href="/contato" onClick={(e) => { e.preventDefault(); navigate('/contato'); }}>{lang === 'pt' ? 'Contato' : 'Contact'}</a>
+        </div>
       </footer>
     </main>
   );

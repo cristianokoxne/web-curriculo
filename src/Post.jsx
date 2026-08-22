@@ -1,25 +1,14 @@
 import { posts } from './posts';
-import { translations } from './translations';
 import './Blog.css';
 
 export default function Post({ id, goBack, lang = 'pt', dark = false, setLang, setDark }) {
   const post = posts.find((p) => p.id === id);
   if (!post) return null;
 
-  const t = translations[lang];
   const backText = lang === 'en' ? '← Back' : '← Voltar';
 
   return (
     <div className={`app ${dark ? 'dark' : ''}`}>
-      <div className="top-bar">
-        <select value={lang} onChange={(e) => setLang(e.target.value)}>
-          <option value="pt">PT-BR</option>
-          <option value="en">EN</option>
-        </select>
-        <button className="theme-toggle" onClick={() => setDark(!dark)}>
-          {dark ? t.lightMode : t.darkMode}
-        </button>
-      </div>
       <div className="post">
         <div className="post-nav">
           <button onClick={goBack}>{backText}</button>
