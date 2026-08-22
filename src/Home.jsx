@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import './App.css';
 import { translations } from './translations';
 import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiMoon, FiSun } from 'react-icons/fi';
+import { FiArrowDown, FiBriefcase, FiCode, FiGlobe, FiMail, FiMoon, FiSun, FiUser } from 'react-icons/fi';
 
 export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
   const t = translations[lang];
+  const [photoAvailable, setPhotoAvailable] = useState(true);
 
   return (
     <main className="resume-page">
@@ -24,6 +26,12 @@ export default function Home({ lang = 'pt', setLang, dark = false, setDark }) {
       <header className="header hero">
         <div className="hero-orbit orbit-one" />
         <div className="hero-orbit orbit-two" />
+        <div className="profile-frame" title="Foto de Cristiano Koxne">
+          <div className="profile-ring" />
+          {photoAvailable && <img src="/images/foto.png" alt="Cristiano Koxne" onError={() => setPhotoAvailable(false)} />}
+          {!photoAvailable && <div className="profile-placeholder"><FiUser /><span>{lang === 'pt' ? 'Sua foto' : 'Your photo'}</span></div>}
+          <span className="profile-label">{lang === 'pt' ? 'DISPONÍVEL PARA PROJETOS' : 'AVAILABLE FOR PROJECTS'}</span>
+        </div>
         <p className="eyebrow">{lang === 'pt' ? 'PORTFÓLIO · ENGENHARIA DE SOFTWARE' : 'PORTFOLIO · SOFTWARE ENGINEERING'}</p>
         <h1>{t.title}</h1>
         <h2>{t.subtitle}</h2>
