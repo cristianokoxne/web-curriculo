@@ -1,0 +1,55 @@
+---
+import '../App.css';
+import '../Blog.css';
+import '../Contact.css';
+import '../styles/astro.css';
+
+const { title = 'Cristiano Koxne | Engenheiro de Software', page = 'home' } = Astro.props;
+const nav = [
+  { href: '/', key: 'home', pt: 'Home', en: 'Home' },
+  { href: '/blog', key: 'blog', pt: 'Blog', en: 'Blog' },
+  { href: '/contato', key: 'contact', pt: 'Contato', en: 'Contact' },
+];
+---
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Portfólio de Cristiano Koxne, engenheiro de software." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="app">
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="brand" href="/" aria-label="Ir para o início">CK<span>.</span></a>
+        <div class="nav-links" id="nav-links">
+          {nav.map((item) => <a class:list={{ active: page === item.key }} href={item.href}><span class="lang-pt">{item.pt}</span><span class="lang-en">{item.en}</span></a>)}
+        </div>
+        <div class="nav-controls">
+          <select id="language-picker" aria-label="Selecionar idioma">
+            <option value="pt">PT-BR</option><option value="en">EN</option>
+          </select>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema"><span class="theme-icon">◐</span><span class="theme-label"><span class="lang-pt">Modo escuro</span><span class="lang-en">Dark mode</span></span></button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        </div>
+      </nav>
+      <slot />
+    </div>
+    <script is:inline>
+      const root = document.documentElement;
+      const app = document.querySelector('.app');
+      const picker = document.querySelector('#language-picker');
+      const theme = document.querySelector('#theme-toggle');
+      const nav = document.querySelector('#nav-links');
+      const menu = document.querySelector('#menu-toggle');
+      const applyLanguage = (lang) => { root.dataset.lang = lang; root.lang = lang === 'pt' ? 'pt-BR' : 'en'; picker.value = lang; localStorage.setItem('language', lang); };
+      applyLanguage(localStorage.getItem('language') || 'pt');
+      picker.addEventListener('change', (event) => applyLanguage(event.target.value));
+      if (localStorage.getItem('theme') === 'dark') app.classList.add('dark');
+      theme.addEventListener('click', () => { const dark = app.classList.toggle('dark'); localStorage.setItem('theme', dark ? 'dark' : 'light'); });
+      menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', open); menu.textContent = open ? '×' : '☰'; });
+    </script>
+  </body>
+</html>

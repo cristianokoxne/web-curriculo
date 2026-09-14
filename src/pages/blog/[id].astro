@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import Localized from '../../components/Localized.astro';
+import { posts } from '../../posts.js';
+import { renderPost } from '../../lib/markdown.js';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const title = typeof post.title === 'string' ? post.title : post.title.pt;
+const ptContent = typeof post.content === 'string' ? post.content : post.content.pt;
+const enContent = typeof post.content === 'string' ? post.content : post.content.en;
+---
+<BaseLayout title={`${title} | Cristiano Koxne`} page="blog">
+  <main class="post">
+    <div class="post-nav"><a href="/blog"><Localized pt="← Voltar" en="← Back" /></a></div>
+    <h1><Localized pt={title} en={typeof post.title === 'string' ? post.title : post.title.en} /></h1>
+    <div class="post-content"><div class="lang-pt" set:html={renderPost(ptContent)}></div><div class="lang-en" set:html={renderPost(enContent)}></div></div>
+    <div class="post-tags">{post.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+const { name } = Astro.props;
+---
+<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === 'profile' && <><circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 20c.8-3.3 3.1-5 6.5-5s5.7 1.7 6.5 5"></path></>}
+  {name === 'code' && <><path d="m8.5 7-5 5 5 5"></path><path d="m15.5 7 5 5-5 5"></path><path d="m13.5 4-3 16"></path></>}
+  {name === 'education' && <><path d="m3 9 9-4 9 4-9 4-9-4Z"></path><path d="M7 11.2V16c2.8 2 7.2 2 10 0v-4.8"></path><path d="M21 9v6"></path></>}
+  {name === 'work' && <><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"></path><path d="M3 12h18"></path><path d="M10 12v2h4v-2"></path></>}
+  {name === 'products' && <><rect x="4" y="4" width="6" height="6" rx="1"></rect><rect x="14" y="4" width="6" height="6" rx="1"></rect><rect x="4" y="14" width="6" height="6" rx="1"></rect><rect x="14" y="14" width="6" height="6" rx="1"></rect></>}
+  {name === 'language' && <><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9S14.3 18.5 12 21c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3Z"></path></>}
+</svg>

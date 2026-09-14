@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import Localized from '../../components/Localized.astro';
+import { posts } from '../../posts.js';
+---
+<BaseLayout title="Blog | Cristiano Koxne" page="blog">
+  <main class="blog" aria-label="Posts do blog">
+    {posts.map((post) => <a class="blog-item" href={`/blog/${post.id}`}><article class="summary"><h3><Localized pt={typeof post.title === 'string' ? post.title : post.title.pt} en={typeof post.title === 'string' ? post.title : post.title.en} /></h3><p><Localized pt={typeof post.summary === 'string' ? post.summary : post.summary.pt} en={typeof post.summary === 'string' ? post.summary : post.summary.en} /></p><div class="tags">{post.tags.map((tag) => <span class="tag">{tag}</span>)}</div></article></a>)}
+  </main>
+</BaseLayout>
