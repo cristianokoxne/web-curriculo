@@ -32,6 +32,35 @@ export const translations = {
     experienceTitle: 'Experience',
     experience: [
       {
+        period: 'Aug 2026 – Sep 2026',
+        role: 'Freelance Full-Stack Developer — Neria Notifications System',
+        details: [
+          'Designed and implemented a scheduled notifications solution, including an administrative calendar, scheduling APIs, and audience segmentation',
+          'Built a Node.js/TypeScript worker for daily execution and idempotent deliveries, with Android push notifications via Expo/Firebase, token registration, batch sending, receipt tracking, and invalid-token handling',
+          'Integrated customer segmentation with Ploomes and WhatsApp message delivery through webhooks'
+        ]
+      },
+      {
+        period: 'Mar 2026 – Apr 2026',
+        role: 'Freelance Full-Stack Mobile Developer — Neria',
+        details: [
+          'Developed a video onboarding and training journey for a React Native/Expo app across Android, iOS, and web, with YouTube player integration, playback resume, progress tracking, and sequential module unlocking',
+          'Built APIs and business rules in Next.js/TypeScript, including progress persistence, contract-type access controls, and Prisma/PostgreSQL database integration'
+        ]
+      },
+      {
+        period: 'Mar 2023 – Present',
+        role: 'Back End Developer — Integrait Tecnologia, Pato Branco, Brazil',
+        details: [
+          'Gathered and documented detailed requirements and defined context scopes for specialist AI agents by collaborating with cross-functional stakeholders',
+          'Designed, developed, and containerized middleware services in Node.js and Python, deploying them on AWS Lambda and EC2 via Docker for high availability',
+          'Integrated Salesforce, RD Station, LegalOne (Reuters), Wazuh, Pipedrive, and DeskManager using REST APIs and GraphQL to orchestrate end-to-end workflows',
+          'Configured context-aware AI agents for domain-specific automation, including document classification and alert triage, and implemented unit, integration, and user-acceptance tests',
+          'Orchestrated more than 10 automation pipelines, reducing manual effort by up to 60% and process turnaround time by 50%',
+          'Automated data validation and AI-driven checks that virtually eliminated data-entry errors, and scaled containerized middleware on AWS for multiple clients'
+        ]
+      },
+      {
         period: 'May 2022 – May 2023',
         role: 'Software Developer at PapersBR Tecnologia, Pato Branco, Brazil',
         details: [
@@ -101,6 +130,35 @@ export const translations = {
     ],
     experienceTitle: 'Experiência',
     experience: [
+      {
+        period: 'Ago 2026 – Set 2026',
+        role: 'Desenvolvedor Full Stack Freelancer — Sistema de Notificações Neria',
+        details: [
+          'Projetou e implementou uma solução de notificações programadas, incluindo calendário administrativo, APIs de agendamento e segmentação de público',
+          'Desenvolveu worker em Node.js/TypeScript para execução diária e entregas idempotentes, com push notifications Android via Expo/Firebase, registro de tokens, envio em lote, rastreamento de recibos e tratamento de tokens inválidos',
+          'Integrou a segmentação de clientes ao Ploomes e o encaminhamento de mensagens WhatsApp via webhook'
+        ]
+      },
+      {
+        period: 'Mar 2026 – Abr 2026',
+        role: 'Desenvolvedor Full Stack Mobile Freelancer — Neria',
+        details: [
+          'Desenvolveu uma jornada de onboarding e capacitação em vídeo para aplicativo React Native/Expo (Android, iOS e web), com player integrado ao YouTube, retomada de reprodução, acompanhamento de progresso e desbloqueio sequencial de módulos',
+          'Estruturou também as APIs e regras de negócio em Next.js/TypeScript, com persistência de progresso, controle por tipo de contrato e integração com banco de dados via Prisma/PostgreSQL'
+        ]
+      },
+      {
+        period: 'Mar 2023 – Atual',
+        role: 'Desenvolvedor Back-end — Integrait Tecnologia, Pato Branco, Brasil',
+        details: [
+          'Levantou e documentou requisitos detalhados e definiu escopos de contexto para agentes especialistas de IA em colaboração com stakeholders multidisciplinares',
+          'Projetou, desenvolveu e conteinerizou serviços de middleware em Node.js e Python, implantando-os em AWS Lambda e EC2 via Docker para alta disponibilidade',
+          'Integrou Salesforce, RD Station, LegalOne (Reuters), Wazuh, Pipedrive e DeskManager usando APIs REST e GraphQL para orquestrar fluxos de trabalho ponta a ponta',
+          'Configurou agentes de IA com contexto para automação de tarefas específicas, incluindo classificação de documentos e triagem de alertas, e implementou testes unitários, de integração e de aceitação do usuário',
+          'Orquestrou mais de 10 pipelines de automação, reduzindo o esforço manual em até 60% e o tempo de execução dos processos em 50%',
+          'Automatizou validação de dados e verificações orientadas por IA que praticamente eliminaram erros de digitação, além de escalar middleware conteinerizado na AWS para múltiplos clientes'
+        ]
+      },
       {
         period: 'Mai 2022 – Mai 2023',
         role: 'Desenvolvedor de Software na PapersBR Tecnologia, Pato Branco, Brasil',

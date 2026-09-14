@@ -1,4 +1,239 @@
+const wakeUpBroPost = `O **Wake Up Bro!** é um experimento.
+
+Mais do que criar uma aplicação web, a ideia deste projeto era responder uma pergunta:
+
+**Até onde dá para desenvolver um projeto real utilizando apenas modelos gratuitos de Inteligência Artificial?**
+
+Para descobrir, resolvi construir o Wake Up Bro! utilizando modelos de IA gratuitos acessados através do **OpenRouter**, deixando a IA participar de praticamente todo o processo de desenvolvimento.
+
+O resultado foi um MVP funcional, aproximadamente **84 milhões de tokens processados**, mais de **1.600 requisições**, vários modelos diferentes utilizados e praticamente **zero custo financeiro com IA**.
+
+## Mas o que é o OpenRouter?
+
+O **OpenRouter** funciona como uma camada centralizadora entre a aplicação — ou, nesse caso, as ferramentas utilizadas durante o desenvolvimento — e diversos modelos de Inteligência Artificial.
+
+Em vez de precisar criar uma integração diferente para cada empresa ou modelo, é possível utilizar uma única API e, através dela, acessar modelos de diferentes provedores.
+
+Isso fica especialmente interessante quando falamos dos modelos gratuitos.
+
+Durante este projeto, utilizei diferentes modelos disponíveis no free tier do OpenRouter, como:
+
+- MiniMax M2.7
+- MiniMax M3
+- Laguna S 2.1
+- Ling 3.0 Flash
+- além de diversos outros modelos ao longo do desenvolvimento.
+
+Mas existe outro detalhe importante. Os modelos gratuitos possuem limites de utilização, disponibilidade variável e podem eventualmente ficar temporariamente indisponíveis.
+
+É justamente aí que o OpenRouter se torna interessante para esse tipo de experimento. Ele consegue centralizar o acesso a esses modelos e trabalhar com diferentes opções de roteamento, permitindo alternar entre modelos disponíveis quando necessário.
+
+Na prática, isso significa que o desenvolvimento não precisa ficar preso a uma única IA. Se determinado modelo deixa de estar disponível, atinge algum limite ou não é mais uma boa opção naquele momento, outro pode assumir o trabalho.
+
+E essa capacidade de utilizar um conjunto de modelos gratuitos foi justamente o que tornou este experimento possível.
+
+## O desafio
+
+A regra que defini para o projeto era simples:
+
+**não utilizar modelos pagos para desenvolver o MVP.**
+
+Não queria descobrir o quão rápido seria possível construir essa aplicação utilizando o melhor modelo de programação disponível. A resposta provavelmente seria algumas horas.
+
+O experimento era justamente o contrário:
+
+> O que acontece se eu tiver praticamente poder computacional de IA ilimitado em quantidade, mas utilizando modelos gratuitos, menores e de capacidades diferentes?
+
+O objetivo era descobrir se esse conjunto de ferramentas já seria suficiente para tocar pequenos projetos reais.
+
+## O que o Wake Up Bro! faz?
+
+A aplicação em si é propositalmente simples.
+
+O Wake Up Bro! utiliza a câmera do navegador para detectar se existe uma pessoa em frente à tela. Quando um rosto é encontrado, o sistema dispara um vídeo motivacional aleatório.
+
+A lógica é basicamente:
+
+**Você aparece.**
+
+**Ele percebe.**
+
+**E manda você acordar pra vida.**
+
+É um projeto pequeno, mas suficientemente completo para envolver interface, lógica de aplicação, câmera, processamento no navegador, detecção facial, gerenciamento de estado, armazenamento local e deploy.
+
+Ou seja, um bom laboratório para testar desenvolvimento assistido por IA.
+
+## Os números do experimento
+
+Para chegar ao MVP atual foram utilizados aproximadamente:
+
+- **1.600+ requisições aos modelos**
+- **84,4M tokens processados**
+
+Entre os modelos que mais participaram do desenvolvimento:
+
+- **MiniMax M2.7**: 451 requisições e aproximadamente 41,6 milhões de tokens
+- **MiniMax M3**: 407 requisições e aproximadamente 37,2 milhões de tokens
+
+Além deles, outros modelos foram utilizados para completar diferentes partes do desenvolvimento. E tudo isso utilizando modelos gratuitos.
+
+O custo financeiro direto com IA para construir o MVP foi, portanto, **praticamente zero**.
+
+Mas isso não significa que não existiu custo. O principal custo foi outro: **tempo.**
+
+## 84 milhões de tokens não significam 84 milhões de tokens de produtividade
+
+Uma das coisas mais interessantes desse experimento foi justamente perceber isso.
+
+Modelos gratuitos conseguem produzir muito código. Mas produzir código e produzir código correto são duas coisas diferentes.
+
+Durante o desenvolvimento aconteceram várias situações em que eu solicitava uma alteração aparentemente simples e a IA acabava quebrando alguma funcionalidade que já estava pronta.
+
+Então começava um ciclo:
+
+- implementar uma funcionalidade;
+- testar;
+- encontrar um problema;
+- pedir uma correção;
+- a IA corrigir aquele problema;
+- perceber que outra parte havia quebrado;
+- mandar corrigir novamente;
+- testar outra vez.
+
+Em alguns momentos precisei literalmente pedir para a IA **refazer algo que ela própria havia acabado de quebrar**.
+
+Isso obviamente aumentou bastante o consumo de tokens. Por isso, os 84 milhões de tokens desse projeto não representam apenas construção. Eles também representam tentativa, erro, regressão, correção e experimentação.
+
+E, curiosamente, essa foi uma das partes mais importantes do teste.
+
+## Cerca de três dias — mas não três dias trabalhando nisso
+
+O MVP levou aproximadamente **três dias** para chegar ao estado atual. Mas existe uma diferença importante:
+
+**não foram três dias dedicados exclusivamente ao Wake Up Bro!**
+
+Grande parte do tempo eu simplesmente deixava os agentes trabalhando enquanto continuava fazendo outras atividades do meu trabalho normalmente.
+
+A IA implementava alguma coisa. Eu voltava depois. Testava. Encontrava algum problema. Passava novas instruções. E deixava novamente o processo seguir em paralelo.
+
+Esse talvez tenha sido o maior aprendizado de todo o projeto. A comparação mais interessante não é:
+
+**"IA gratuita versus IA paga".**
+
+É:
+
+> "Quanto trabalho paralelo eu consigo manter acontecendo com um custo praticamente zero?"
+
+## Modelos melhores provavelmente fariam isso muito mais rápido
+
+É importante deixar isso claro. O Wake Up Bro! não é um projeto extremamente complexo.
+
+Utilizando um modelo mais avançado, especializado em programação e com uma janela de contexto maior, provavelmente seria possível chegar a um resultado semelhante em poucas horas.
+
+Os modelos gratuitos exigiram mais supervisão. Erraram mais. Perderam contexto algumas vezes. Criaram regressões. Precisaram receber novamente explicações sobre partes do projeto. E consumiram muito mais tokens para chegar ao mesmo resultado.
+
+Mas isso não invalida o experimento. Na verdade, **esse é justamente o experimento**.
+
+Porque mesmo com todas essas limitações, **o projeto ficou pronto.**
+
+## O custo foi quase exclusivamente tempo
+
+E aqui está a parte que achei mais interessante.
+
+Financeiramente, desenvolver esse MVP utilizando IA custou praticamente nada. O recurso consumido foi principalmente:
+
+**tempo de máquina + tempo de supervisão humana.**
+
+E nem mesmo todo esse tempo precisava ser dedicado exclusivamente ao projeto. Foi possível manter o desenvolvimento acontecendo em paralelo enquanto outras atividades eram realizadas.
+
+Isso muda bastante a forma de pensar sobre pequenos projetos.
+
+## O que eu aprendi
+
+A maior conclusão desse experimento não é que modelos gratuitos são melhores ou piores que modelos pagos. É que eles já são **bons o suficiente para determinadas tarefas**.
+
+Principalmente quando existe alguém do outro lado capaz de:
+
+- entender o código gerado;
+- identificar quando algo está errado;
+- testar o resultado;
+- fornecer contexto;
+- dividir problemas grandes em tarefas menores;
+- perceber regressões;
+- decidir quando aceitar ou rejeitar uma solução.
+
+A IA não eliminou o trabalho do desenvolvedor. Ela mudou onde o trabalho acontece.
+
+Em vez de escrever cada linha manualmente, uma grande parte do tempo passa a ser utilizada para **orientar, revisar, testar e tomar decisões**.
+
+## Desenvolvimento paralelo talvez seja a parte mais interessante
+
+Depois desse projeto, uma coisa ficou muito clara para mim:
+
+**free tiers de IA podem ser extremamente interessantes para pequenos projetos paralelos.**
+
+Talvez eu não utilizasse essa abordagem para construir rapidamente um sistema crítico ou uma aplicação extremamente complexa. Mas para:
+
+- protótipos;
+- ferramentas internas;
+- automações;
+- pequenos SaaS;
+- provas de conceito;
+- projetos pessoais;
+- experimentos;
+- MVPs;
+
+a conta começa a ficar muito interessante.
+
+Enquanto um projeto principal está sendo desenvolvido, nada impede que outros pequenos projetos fiquem sendo construídos em paralelo por agentes utilizando modelos gratuitos. O custo financeiro pode ser praticamente nulo.
+
+O limitador passa a ser principalmente a sua capacidade de **acompanhar, validar e direcionar esses agentes**.
+
+## No fim, esse era o verdadeiro teste
+
+O Wake Up Bro! começou como uma aplicação simples e acabou virando um experimento sobre uma questão muito maior.
+
+Não era: **"Uma IA consegue fazer um site?"** Isso já sabemos que consegue.
+
+A pergunta era:
+
+> "É possível manter um projeto inteiro sendo desenvolvido utilizando apenas a capacidade gratuita distribuída entre diferentes modelos de IA?"
+
+Depois de aproximadamente:
+
+- **84,4 milhões de tokens**
+- **1.600 requisições**
+- **vários modelos**
+- **três dias de experimentação**
+- **e R$ 0 em modelos pagos**
+
+a resposta, pelo menos para um projeto desse tamanho, foi: **sim.**
+
+Não foi perfeito. Não foi o caminho mais rápido. Algumas coisas precisaram ser refeitas várias vezes. Mas funcionou.
+
+E talvez essa seja a parte mais interessante de tudo.
+
+Hoje já existe poder computacional de IA suficiente sendo disponibilizado gratuitamente para que um desenvolvedor consiga manter **pequenos projetos sendo construídos em paralelo praticamente sem custo financeiro**.
+
+Você ainda precisa saber o que está fazendo. Ainda precisa testar. Ainda precisa revisar. Ainda precisa tomar decisões. Mas agora pode ter várias IAs trabalhando enquanto você faz outra coisa.
+
+E isso abre possibilidades bem interessantes.
+
+Built by **Cristiano Koxne** and a lot of different AI agents.
+
+**Wake Up, Bro!**
+
+Um pequeno projeto feito para descobrir até onde dava para ir usando apenas IA gratuita.`;
+
 export const posts = [
+  {
+    id: 'wake-up-bro-ai-experiment',
+    title: { pt: 'Wake Up Bro: o experimento de construir com IA gratuita', en: 'Wake Up Bro: an experiment in building with free AI' },
+    summary: { pt: 'Como um MVP de detecção facial e vídeos motivacionais se tornou um experimento com 84,4 milhões de tokens e mais de 1.600 requisições.', en: 'How a face-detection MVP with motivational videos became an experiment involving 84.4 million tokens and more than 1,600 requests.' },
+    content: { pt: wakeUpBroPost, en: wakeUpBroPost },
+    tags: ['AI', 'OpenRouter', 'Experiment', 'Face Detection', 'MVP', 'Wake Up Bro']
+  },
   {
     id: 'amazon-ses-transactional-email',
     title: {
