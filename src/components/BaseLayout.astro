@@ -44,11 +44,13 @@ const nav = [
       const theme = document.querySelector('#theme-toggle');
       const nav = document.querySelector('#nav-links');
       const menu = document.querySelector('#menu-toggle');
+      const themeIcon = theme.querySelector('.theme-icon');
       const applyLanguage = (lang) => { root.dataset.lang = lang; root.lang = lang === 'pt' ? 'pt-BR' : 'en'; picker.value = lang; localStorage.setItem('language', lang); };
       applyLanguage(localStorage.getItem('language') || 'pt');
       picker.addEventListener('change', (event) => applyLanguage(event.target.value));
-      if (localStorage.getItem('theme') === 'dark') app.classList.add('dark');
-      theme.addEventListener('click', () => { const dark = app.classList.toggle('dark'); localStorage.setItem('theme', dark ? 'dark' : 'light'); });
+      const applyTheme = (dark) => { app.classList.toggle('dark', dark); themeIcon.textContent = dark ? '☀' : '☾'; localStorage.setItem('theme', dark ? 'dark' : 'light'); };
+      applyTheme(localStorage.getItem('theme') === 'dark');
+      theme.addEventListener('click', () => applyTheme(!app.classList.contains('dark')));
       menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', open); menu.textContent = open ? '×' : '☰'; });
     </script>
   </body>

@@ -37,6 +37,10 @@ html[data-lang='pt'] .lang-en, html[data-lang='en'] .lang-pt { display: none !im
 @keyframes profile-in { from { opacity: 0; transform: translateY(-45%) scale(.94); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
 
 @media (max-width: 760px) {
+  .nav-controls .theme-toggle .theme-icon { display:inline !important; font-size:1rem; line-height:1; }
+  .resume-downloads { gap:.35rem; }
+  .resume-downloads a { padding:.34rem .45rem; font-size:.56rem; }
+  .resume-downloads svg { width:12px; height:12px; }
   .nav-links.open { animation: menu-in .2s ease both; }
   @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 }
