@@ -49,6 +49,26 @@ export const translations = {
         ]
       },
       {
+        period: 'Nov 2024 – Dec 2024',
+        role: 'Consultant — SincroSoftware',
+        details: [
+          'Led the migration of a monolithic Node.js application to a microservices architecture, mapping service boundaries and decoupling critical business flows',
+          'Containerized services with Docker, standardizing local development and deployment environments while improving portability and operational consistency',
+          'Integrated an LLM-based recommendation engine with RAG strategies to retrieve relevant contextual data and increase the personalization of recommendations',
+          'Supported the transition with technical guidance and iterative validation, reducing migration risk while keeping the application evolution continuous'
+        ]
+      },
+      {
+        period: 'Sep 2024 – Dec 2024',
+        role: 'Freelance Developer — Cronus Saúde',
+        details: [
+          'Architected cashback and loyalty microservices using React.js, API Gateway, PostgreSQL, and Stripe, defining secure and scalable flows for financial operations',
+          'Developed the integration layer between payment, loyalty, and customer data services, supporting reliable transaction processing and traceability',
+          'Built an administrative dashboard with React and Chart.js for real-time reporting, giving the operations team visibility into key indicators and program performance',
+          'Organized the solution around reusable components and service boundaries to support the future expansion of the benefits platform'
+        ]
+      },
+      {
         period: 'Mar 2023 – Present',
         role: 'Back End Developer — Integrait Tecnologia, Pato Branco, Brazil',
         details: [
@@ -145,6 +165,26 @@ export const translations = {
         details: [
           'Desenvolveu uma jornada de onboarding e capacitação em vídeo para aplicativo React Native/Expo (Android, iOS e web), com player integrado ao YouTube, retomada de reprodução, acompanhamento de progresso e desbloqueio sequencial de módulos',
           'Estruturou também as APIs e regras de negócio em Next.js/TypeScript, com persistência de progresso, controle por tipo de contrato e integração com banco de dados via Prisma/PostgreSQL'
+        ]
+      },
+      {
+        period: 'Nov 2024 – Dez 2024',
+        role: 'Consultor — SincroSoftware',
+        details: [
+          'Liderou a migração de uma aplicação monolítica em Node.js para arquitetura de microsserviços, mapeando limites entre serviços e desacoplando fluxos críticos de negócio',
+          'Conteinerizou os serviços com Docker, padronizando os ambientes de desenvolvimento e implantação e aumentando a portabilidade e a consistência operacional',
+          'Integrou um motor de recomendação baseado em LLM com estratégias RAG para recuperar dados contextuais relevantes e aumentar a personalização das recomendações',
+          'Apoiou a transição com orientação técnica e validações iterativas, reduzindo riscos da migração e mantendo a evolução contínua da aplicação'
+        ]
+      },
+      {
+        period: 'Set 2024 – Dez 2024',
+        role: 'Desenvolvedor Freelancer — Cronus Saúde',
+        details: [
+          'Arquitetou microsserviços de cashback e fidelidade usando React.js, API Gateway, PostgreSQL e Stripe, definindo fluxos seguros e escaláveis para operações financeiras',
+          'Desenvolveu a camada de integração entre pagamentos, fidelidade e dados de clientes, garantindo processamento confiável e rastreabilidade das transações',
+          'Desenvolveu dashboard administrativo com React e Chart.js para relatórios em tempo real, dando à operação visibilidade sobre indicadores e desempenho do programa',
+          'Organizou a solução em componentes reutilizáveis e limites de serviço preparados para a expansão futura da plataforma de benefícios'
         ]
       },
       {
