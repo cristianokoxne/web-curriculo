@@ -13,7 +13,7 @@ html[data-lang='pt'] .lang-en, html[data-lang='en'] .lang-pt { display: none !im
 .brand { transition: transform .2s ease, color .2s ease; }
 .brand:hover { transform: translateY(-2px); }
 .socials a svg { width: 22px; height: 22px; }
-.resume-downloads { position:absolute; right:clamp(2rem,9vw,10rem); top:calc(50% + clamp(92px,11vw,146px)); z-index:2; display:flex; gap:.45rem; }
+.resume-downloads { position:absolute; right:clamp(2rem,9vw,10rem); top:calc(50% + clamp(120px,13vw,178px)); z-index:2; display:flex; width:clamp(150px,19vw,260px); justify-content:center; gap:.65rem; }
 .resume-downloads a { display:inline-flex; align-items:center; gap:.42rem; padding:.45rem .6rem; color:#fff; background:rgba(0,48,47,.22); border:1px solid rgba(255,255,255,.35); text-decoration:none; font:700 .65rem 'DM Mono',monospace; letter-spacing:.04em; transition:.2s ease; }
 .resume-downloads a:hover { color:var(--accent-deep); background:#fff; transform:translateY(-3px); }
 .resume-downloads svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
@@ -37,7 +37,6 @@ html[data-lang='pt'] .lang-en, html[data-lang='en'] .lang-pt { display: none !im
 @keyframes profile-in { from { opacity: 0; transform: translateY(-45%) scale(.94); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
 
 @media (max-width: 760px) {
-  .resume-downloads { position:relative; right:auto; top:auto; width:max-content; margin:1.35rem 0 0; }
   .nav-links.open { animation: menu-in .2s ease both; }
   @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 }
